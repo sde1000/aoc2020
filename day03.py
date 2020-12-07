@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 
-with open('input.txt') as f:
-    trees = [ x.strip() for x in f.readlines() ]
+with open('day03-input.txt') as f:
+    trees = [ x.strip() for x in f ]
 
 def check(right, down):
     x = 0
@@ -14,6 +14,8 @@ def check(right, down):
         x += right
     return count
 
+print(f"Part one: {check(3, 1)}")
+
 r = 1
 for i in [check(1, 1),
           check(3, 1),
@@ -22,4 +24,4 @@ for i in [check(1, 1),
           check(1, 2)]:
     r = r * i
 
-print(r)
+print(f"Part two: {r}")

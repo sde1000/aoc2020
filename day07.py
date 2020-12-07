@@ -10,7 +10,7 @@ def bag_contents(x):
     return [ (int(m.group(1)), m.group(2)) for m in (
         bag_re.match(b) for b in x.split(', ') ) ]
 
-with open("day7-input.txt") as f:
+with open("day07-input.txt") as f:
     rules = { m.group(1): bag_contents(m.group(2)) for m in (
         rule_re.match(l) for l in f ) }
 

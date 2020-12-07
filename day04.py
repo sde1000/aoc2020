@@ -3,9 +3,9 @@
 import re
 
 def passports():
-    with open('input.txt') as f:
-        r = {}
-        for l in f.readlines():
+    r = {}
+    with open('day04-input.txt') as f:
+        for l in f:
             pairs = l.split()
             if not pairs:
                 yield r
@@ -25,6 +25,13 @@ pid_re = re.compile(r'^\d{9}$')
 class Invalid(Exception):
     pass
 
+def valid_p1(p):
+    req = ['byr', 'iyr', 'eyr', 'hgt', 'hcl', 'ecl', 'pid']
+    for r in req:
+        if r not in p:
+            return False
+    return True
+
 def check(p, key, re):
     if key not in p:
         raise Invalid()
@@ -33,7 +40,7 @@ def check(p, key, re):
         raise Invalid()
     return r
 
-def valid(p):
+def valid_p2(p):
     try:
         byr = int(check(p, 'byr', year_re).group(1))
         if byr < 1920 or byr > 2002:
@@ -59,9 +66,5 @@ def valid(p):
         return False
     return True
 
-count = 0
-for p in passports():
-    if valid(p):
-        count += 1
-
-print(count)
+print(f"Part one: {sum(valid_p1(p) for p in passports())}")
+print(f"Part two: {sum(valid_p2(p) for p in passports())}")

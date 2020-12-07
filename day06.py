@@ -2,7 +2,7 @@
 
 import functools
 
-with open("day6-input.txt") as f:
+with open("day06-input.txt") as f:
     groups = [ [ { a for a in answer} for answer in g.split("\n") ] for g in f.read().strip().split("\n\n") ]
 
 g1 = [ len(functools.reduce(lambda a,b:a|b, g)) for g in groups ]
