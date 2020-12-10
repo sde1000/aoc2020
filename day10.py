@@ -14,20 +14,10 @@ for a, b in zip([0] + adapters, adapters):
         threes += 1
 
 print(f"Part one: {ones * threes}")
-    
-joltages = { 0: 1 }
-def ways_to_reach(j):
-    if j < 0:
-        return 0
-    if j in joltages:
-        return joltages[j]
-    if j in adapters:
-        return (ways_to_reach(j - 1) +
-                ways_to_reach(j - 2) +
-                ways_to_reach(j - 3))
-    return 0
 
+joltages = { 0: 1 }
 for i in adapters:
-    joltages[i] = ways_to_reach(i)
+    joltages[i] = joltages.get(i - 1, 0) + joltages.get(i - 2, 0) \
+        + joltages.get(i - 3, 0)
 
 print(f"Part two: {joltages[adapters[-1]]}")
