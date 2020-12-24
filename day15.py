@@ -2,8 +2,6 @@
 
 i = [5, 2, 8, 16, 18, 0, 1]
 
-import itertools
-
 def mem(start):
     start = list(start)
     turn = 0
@@ -19,7 +17,7 @@ def mem(start):
         turn += 1
 
 def th(n, s):
-    for i in range(n):
+    for _ in range(n):
         r = next(s)
     return r
 
